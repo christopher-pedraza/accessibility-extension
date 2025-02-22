@@ -11,10 +11,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Show input field if "Custom" is selected
     document.getElementById("font").addEventListener("change", function () {
-        const customFontInput = document.getElementById("customFont");
-        customFontInput.style.display =
+        document.getElementById("customFont").style.display =
             this.value === "Custom" ? "block" : "none";
     });
 
@@ -26,7 +24,18 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         chrome.storage.sync.set({ font: selectedFont }, function () {
-            alert("Font saved! Refresh pages to apply.");
+            chrome.tabs.query(
+                { active: true, currentWindow: true },
+                function (tabs) {
+                    chrome.scripting.executeScript({
+                        target: { tabId: tabs[0].id },
+                        func: (font) => {
+                            document.body.style.fontFamily = font;
+                        },
+                        args: [selectedFont],
+                    });
+                }
+            );
         });
     });
 });
