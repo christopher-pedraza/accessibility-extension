@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Font Changer</title>
+        <style>
+            body {
+                width: 200px;
+                padding: 10px;
+                font-family: Arial, sans-serif;
+            }
+        </style>
+    </head>
+    <body>
+        <h3>Change Font</h3>
+        <select id="font">
+            <option value="Arial">Arial</option>
+            <option value="Verdana">Verdana</option>
+            <option value="Times New Roman">Times New Roman</option>
+            <option value="Custom">Custom</option>
+        </select>
+        <input
+            type="text"
+            id="customFont"
+            placeholder="Enter custom font"
+            style="display: none"
+        />
+        <button id="apply">Apply</button>
+        <script src="popup.js"></script>
+    </body>
+</html>
