@@ -3,7 +3,7 @@
     "name": "Custom Font Changer",
     "version": "1.0",
     "description": "Change the font of websites for better readability.",
-    "permissions": ["storage"],
+    "permissions": ["storage", "activeTab"],
     "host_permissions": ["<all_urls>"],
     "background": {
         "service_worker": "background.js"
